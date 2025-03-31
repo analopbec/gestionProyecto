@@ -1,19 +1,5 @@
 const valorComun = 10;
 
-/*
-const Complejidad = {
-  Minima: (duracion) => duracion * valorComun,
-  Media: (duracion) => duracion * valorComun * 1.05,
-  Maxima: (duracion) => {
-    if (duracion <= 10) {
-      return duracion * valorComun * 1.07;
-    } else {
-      return duracion * valorComun * 1.07 + (1000 * (duracion - 10));
-    }
-  },
-};
-*/
-
 class Minima {
   calcularCosto(duracion) {  
     return duracion * valorComun;
@@ -108,7 +94,46 @@ class TareaCompuesta {
   }
 }
 
-
-
-
 module.exports = { Tarea, TareaCompuesta, Minima, Media, Maxima };
+
+
+/*
+      OTRAS OPCIONES:
+      -----  TIPO DE COMPLEJIDAD EN CONSTANTE: -------
+      const Complejidad = {
+        Minima: (duracion) => duracion * valorComun,
+        Media: (duracion) => duracion * valorComun * 1.05,
+        Maxima: (duracion) => {
+          if (duracion <= 10) {
+            return duracion * valorComun * 1.07;
+          } else {
+            return duracion * valorComun * 1.07 + (1000 * (duracion - 10));
+          }
+        },
+      };
+      
+      USAR CONDICIONAL DENTRO DE LA CLASE:
+        getCosto() {
+          let costoBase = this.duracion * VALOR_COMUN;
+          let extra = 0;
+      
+          switch (this.tipoComplejidad) {
+            case "minima":
+              extra = 0; // No agrega porcentaje extra
+              break;
+            case "media":
+              extra = costoBase * 0.05; // Agrega un 5% extra
+              break;
+            case "maxima":
+              if (this.duracion <= 10) {
+                extra = costoBase * 0.07; // Agrega un 7% extra
+              } else {
+                const diasExtra = this.duracion - 10;
+                extra = costoBase * 0.07 + diasExtra * 1000; // 7% más $1000 por cada día extra
+              }
+              break;
+          }
+          return costoBase + extra;
+        }
+
+*/
