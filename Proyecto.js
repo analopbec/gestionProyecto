@@ -7,9 +7,7 @@ class Proyecto {
     this.tareas.push(tarea);
   }
 
-  getDuracion() { // Devuelve la duracion total de todas las tareas
-    // Utiliza reduce para sumar las duraciones de todas las tareas
-    // La funcion reduce toma un acumulador (acum) y la tarea actual (tarea)
+  getDuracion() {
     return this.tareas.reduce((acum, tarea) => acum + tarea.getDuracion(), 0);
   }
 
@@ -28,7 +26,5 @@ class Proyecto {
 }
 
 module.exports = new Proyecto();
-// Exportamos una instancia de la clase Proyecto
-// para que se pueda usar en otros archivos
-// y no se creen múltiples instancias de Proyecto
+
 
